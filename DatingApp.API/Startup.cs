@@ -92,11 +92,15 @@ namespace DatingApp.API
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            app.UseDefaultFiles();// it will search for the default file in the wwwroot folder which is the index.htlm
+            app.UseStaticFiles();
             
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapFallbackToController("Index","Fallback");
             });
         }
     }
